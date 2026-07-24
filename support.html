@@ -168,7 +168,7 @@
     <div class="wrap">
       <span class="eyebrow"><span class="dot"></span> Support</span>
       <h1>Need a hand with <span class="accent">RaceBox GPS Info</span>?</h1>
-      <p class="lede">Most issues come down to a Bluetooth permission that hasn't been granted yet, or the app trying to connect before the device is fully powered on. Check the quick answers below — if that doesn't sort it, reach out directly and we'll get back to you.</p>
+      <p class="lede">Most issues come down to a Bluetooth permission that hasn't been granted yet, or the RaceBox not getting power. Check the quick answers below — if that doesn't sort it, reach out directly and we'll get back to you.</p>
       <div class="hero-ctas">
         <a class="btn-primary" href="mailto:neal.puff@protonmail.com?subject=RaceBox%20GPS%20Info%20—%20Support">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
@@ -192,7 +192,17 @@
       <div class="faq">
         <details>
           <summary>The app can't find my RaceBox device<span class="plus"></span></summary>
-          <div class="answer">Make sure the device is powered on and awake — most RaceBox units sleep after a few minutes of inactivity and need a power-button tap to wake up. Also confirm it isn't already connected to another phone, the RaceBox Manager app, or a dashcam, since BLE devices generally only hold one connection at a time.</div>
+          <div class="answer">RaceBox devices don't have a power button — there's a single status LED, and the unit turns on automatically as soon as it detects a Bluetooth scan reaching it. If the LED stays dark even while scanning, it isn't getting power: check that it's plugged in, or that its battery has enough charge. Also confirm it isn't already connected to another phone, the RaceBox Manager app, or a dashcam, since BLE devices generally only hold one connection at a time.</div>
+        </details>
+        <details>
+          <summary>What does the LED on my RaceBox mean?<span class="plus"></span></summary>
+          <div class="answer">The device has a single status LED and no buttons — this is what it's telling you:
+            <br><br>
+            <strong>Dark</strong> — no power reaching the device.<br>
+            <strong>Blue</strong> — connected over Bluetooth and turned on.<br>
+            <strong>Green</strong> — connected to power, battery fully charged.<br>
+            <strong>Red</strong> — connected to power, battery charging.
+          </div>
         </details>
         <details>
           <summary>It connects, but shows "No Fix"<span class="plus"></span></summary>
@@ -233,7 +243,7 @@
       <div class="steps">
         <div class="step">
           <div class="num">1</div>
-          <div><h3>Wake the device</h3><p>Tap the power button on your RaceBox once — a light or vibration confirms it's active — then try scanning again.</p></div>
+          <div><h3>Check the LED</h3><p>There's no power button — the LED tells you the state. Dark means no power, so plug it in or make sure the battery is charged. Once it has power, scanning for it is what turns it on.</p></div>
         </div>
         <div class="step">
           <div class="num">2</div>
