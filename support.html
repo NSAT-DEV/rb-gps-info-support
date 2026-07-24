@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support — RaceBox GPS Info</title>
+<meta name="description" content="Support and troubleshooting for RaceBox GPS Info, the iPhone companion app for RaceBox GPS hardware.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#0a0d0b;
+    --panel:#11150f;
+    --panel-line:#232a1f;
+    --phosphor:#3cff6e;
+    --phosphor-dim:rgba(60,255,110,0.14);
+    --amber:#ffab3c;
+    --steel:#8b9690;
+    --white:#eaf2ec;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--void);
+    color:var(--white);
+    font-family:'Inter', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background-image:
+      radial-gradient(circle at 15% 8%, rgba(60,255,110,0.05), transparent 40%),
+      radial-gradient(circle at 85% 92%, rgba(255,171,60,0.04), transparent 40%);
+    pointer-events:none;
+    z-index:0;
+  }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width:920px; margin:0 auto; padding:0 28px; position:relative; z-index:1; }
+  ::selection{ background:var(--phosphor-dim); color:var(--phosphor); }
+  a:focus-visible, button:focus-visible, summary:focus-visible{ outline:2px solid var(--phosphor); outline-offset:3px; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+  }
+
+  /* ---------- NAV ---------- */
+  header.site{ position:sticky; top:0; z-index:50; background:rgba(10,13,11,0.82); backdrop-filter:blur(10px); border-bottom:1px solid var(--panel-line); }
+  nav{ display:flex; align-items:center; justify-content:space-between; padding:18px 0; }
+  .brand{ display:flex; align-items:center; gap:10px; font-family:'Space Mono', monospace; font-weight:700; font-size:15px; letter-spacing:0.02em; }
+  .brand img{ width:26px; height:26px; border-radius:6px; }
+  .brand .dot{ width:7px; height:7px; border-radius:50%; background:var(--phosphor); box-shadow:0 0 8px 1px var(--phosphor); animation:blink 2.6s ease-in-out infinite; }
+  @keyframes blink{ 0%,100%{opacity:1;} 50%{opacity:0.25;} }
+  nav ul{ list-style:none; display:flex; gap:34px; }
+  nav ul a{ font-size:13.5px; color:var(--steel); letter-spacing:0.02em; transition:color .2s ease; }
+  nav ul a:hover{ color:var(--white); }
+  nav .cta-mini{ font-family:'Space Mono', monospace; font-size:12.5px; color:var(--phosphor); border:1px solid rgba(60,255,110,0.35); padding:8px 14px; border-radius:7px; transition:background .2s ease, border-color .2s ease; }
+  nav .cta-mini:hover{ background:var(--phosphor-dim); border-color:var(--phosphor); }
+  @media (max-width:640px){ nav ul{ display:none; } }
+
+  /* ---------- HERO ---------- */
+  .hero{ padding:80px 0 56px; }
+  @media (max-width:700px){ .hero{ padding:52px 0 40px; } }
+  .eyebrow{ display:inline-flex; align-items:center; gap:8px; font-family:'Space Mono', monospace; font-size:12px; letter-spacing:0.14em; color:var(--phosphor); text-transform:uppercase; padding:6px 12px; border:1px solid rgba(60,255,110,0.3); border-radius:100px; margin-bottom:24px; }
+  .eyebrow .dot{ width:6px; height:6px; border-radius:50%; background:var(--phosphor); }
+  h1{ font-family:'Space Mono', monospace; font-weight:700; font-size:clamp(30px, 4.2vw, 44px); line-height:1.15; letter-spacing:-0.01em; margin-bottom:18px; max-width:16ch; }
+  h1 .accent{ color:var(--phosphor); }
+  .hero p.lede{ font-size:16.5px; line-height:1.65; color:var(--steel); max-width:58ch; margin-bottom:30px; }
+  .hero-ctas{ display:flex; align-items:center; gap:18px; flex-wrap:wrap; }
+  .btn-primary{ display:inline-flex; align-items:center; gap:10px; background:var(--phosphor); color:#06110a; font-weight:700; font-size:14.5px; padding:14px 22px; border-radius:10px; transition:transform .18s ease, box-shadow .3s ease; }
+  .btn-primary:hover{ transform:translateY(-1px); box-shadow:0 8px 26px -8px rgba(60,255,110,0.55); }
+  .btn-primary svg{ width:16px; height:16px; }
+  .btn-secondary{ font-size:14px; color:var(--white); border-bottom:1px solid var(--panel-line); padding-bottom:2px; transition:border-color .2s ease, color .2s ease; }
+  .btn-secondary:hover{ color:var(--phosphor); border-color:var(--phosphor); }
+
+  /* ---------- SECTIONS ---------- */
+  section{ padding:56px 0; position:relative; z-index:1; }
+  .section-head{ max-width:60ch; margin-bottom:32px; }
+  .section-tag{ font-family:'Space Mono', monospace; font-size:11.5px; letter-spacing:0.14em; text-transform:uppercase; color:var(--phosphor); margin-bottom:12px; }
+  h2{ font-family:'Inter', sans-serif; font-weight:800; font-size:clamp(22px, 2.8vw, 28px); letter-spacing:-0.01em; margin-bottom:10px; }
+  .section-head p{ color:var(--steel); font-size:15px; line-height:1.6; }
+  hr.rule{ border:none; height:1px; background:var(--panel-line); }
+
+  /* ---------- FAQ ---------- */
+  .faq{ display:flex; flex-direction:column; gap:1px; background:var(--panel-line); border:1px solid var(--panel-line); border-radius:14px; overflow:hidden; }
+  details{ background:var(--panel); }
+  summary{
+    list-style:none; cursor:pointer; padding:19px 22px; display:flex; justify-content:space-between; align-items:center; gap:16px;
+    font-weight:600; font-size:15px;
+  }
+  summary::-webkit-details-marker{ display:none; }
+  summary .plus{
+    flex-shrink:0; width:20px; height:20px; position:relative;
+  }
+  summary .plus::before, summary .plus::after{
+    content:""; position:absolute; background:var(--phosphor); border-radius:2px; transition:transform .2s ease;
+  }
+  summary .plus::before{ width:14px; height:2px; top:9px; left:3px; }
+  summary .plus::after{ width:2px; height:14px; top:3px; left:9px; }
+  details[open] summary .plus::after{ transform:rotate(90deg); opacity:0; }
+  details .answer{ padding:0 22px 20px; color:var(--steel); font-size:14.3px; line-height:1.65; max-width:66ch; }
+  details .answer code{ font-family:'Space Mono', monospace; font-size:13px; background:rgba(255,255,255,0.06); padding:1px 6px; border-radius:4px; color:var(--white); }
+
+  /* ---------- TROUBLESHOOTING STEPS ---------- */
+  .steps{ display:flex; flex-direction:column; gap:0; }
+  .step{ display:flex; gap:18px; padding:18px 0; border-top:1px solid var(--panel-line); }
+  .step:first-child{ border-top:none; }
+  .step .num{
+    flex-shrink:0; width:30px; height:30px; border-radius:8px; background:var(--phosphor-dim);
+    border:1px solid rgba(60,255,110,0.35); color:var(--phosphor); font-family:'Space Mono', monospace;
+    font-size:13px; font-weight:700; display:flex; align-items:center; justify-content:center;
+  }
+  .step h3{ font-size:15px; font-weight:700; margin-bottom:4px; }
+  .step p{ font-size:14px; color:var(--steel); line-height:1.6; }
+
+  /* ---------- CONTACT ---------- */
+  .contact-panel{
+    background:var(--panel); border:1px solid var(--panel-line); border-radius:16px; padding:32px;
+    display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap;
+  }
+  .contact-panel h3{ font-size:18px; margin-bottom:6px; }
+  .contact-panel p{ color:var(--steel); font-size:14px; max-width:44ch; line-height:1.6; }
+  .checklist{ margin-top:36px; }
+  .checklist h3{ font-size:14px; color:var(--white); margin-bottom:14px; font-weight:700; }
+  .checklist ul{ list-style:none; display:flex; flex-direction:column; gap:10px; }
+  .checklist li{ display:flex; gap:10px; align-items:flex-start; font-size:14px; color:var(--steel); line-height:1.5; }
+  .checklist li svg{ flex-shrink:0; width:16px; height:16px; margin-top:2px; color:var(--phosphor); }
+
+  /* ---------- APP INFO ---------- */
+  .info-panel{ background:var(--panel); border:1px solid var(--panel-line); border-radius:16px; padding:8px 26px; }
+  .info-row{ display:flex; justify-content:space-between; align-items:center; padding:16px 0; border-top:1px solid var(--panel-line); gap:20px; }
+  .info-row:first-child{ border-top:none; }
+  .info-row .k{ font-size:14px; color:var(--white); font-weight:600; }
+  .info-row .v{ font-family:'Space Mono', monospace; font-size:13px; color:var(--steel); text-align:right; }
+
+  footer{ border-top:1px solid var(--panel-line); padding:30px 0; }
+  footer .wrap{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+  footer .fbrand{ font-family:'Space Mono', monospace; font-size:12.5px; color:var(--steel); }
+  footer .fnote{ font-size:12px; color:#5c655e; max-width:44ch; text-align:right; }
+  @media (max-width:600px){ footer .wrap{ flex-direction:column; align-items:flex-start; } footer .fnote{ text-align:left; } .contact-panel{ flex-direction:column; align-items:flex-start; } }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <nav>
+      <div class="brand">
+        <img src="racebox-icon.png" alt="">
+        RACEBOX GPS INFO
+        <span class="dot"></span>
+      </div>
+      <ul>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#troubleshooting">Troubleshooting</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a class="cta-mini" href="#contact">Get help</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow"><span class="dot"></span> Support</span>
+      <h1>Need a hand with <span class="accent">RaceBox GPS Info</span>?</h1>
+      <p class="lede">Most issues come down to a Bluetooth permission that hasn't been granted yet, or the app trying to connect before the device is fully powered on. Check the quick answers below — if that doesn't sort it, reach out directly and we'll get back to you.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="mailto:neal.puff@protonmail.com?subject=RaceBox%20GPS%20Info%20—%20Support">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+          Email support
+        </a>
+        <a class="btn-secondary" href="#faq">Browse the FAQ ↓</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><hr class="rule"></div>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-tag">Quick answers</div>
+        <h2>Frequently asked questions</h2>
+        <p>Tap a question to expand it.</p>
+      </div>
+
+      <div class="faq">
+        <details>
+          <summary>The app can't find my RaceBox device<span class="plus"></span></summary>
+          <div class="answer">Make sure the device is powered on and awake — most RaceBox units sleep after a few minutes of inactivity and need a power-button tap to wake up. Also confirm it isn't already connected to another phone, the RaceBox Manager app, or a dashcam, since BLE devices generally only hold one connection at a time.</div>
+        </details>
+        <details>
+          <summary>It connects, but shows "No Fix"<span class="plus"></span></summary>
+          <div class="answer">A GPS fix depends on the receiver seeing enough open sky, not on the app — indoors, in a garage, or under heavy cloud cover it can take a while, or never lock at all. Take the device outside with a clear view up and give it 30–60 seconds; the satellite count on screen will climb as it locks on.</div>
+        </details>
+        <details>
+          <summary>Why does the app need Bluetooth permission?<span class="plus"></span></summary>
+          <div class="answer">Bluetooth is the only thing this app uses. It's how the app talks to your RaceBox device to read its GPS data — there's no other reason it would ask. If you declined the prompt, you can grant it under <code>Settings → RaceBox GPS Info → Bluetooth</code>.</div>
+        </details>
+        <details>
+          <summary>Which RaceBox devices are supported?<span class="plus"></span></summary>
+          <div class="answer">RaceBox Mini, RaceBox Mini S, and RaceBox Micro. Other RaceBox products that don't advertise over Bluetooth LE with the standard RaceBox naming won't show up in a scan.</div>
+        </details>
+        <details>
+          <summary>Does the app collect or share my data?<span class="plus"></span></summary>
+          <div class="answer">No. RaceBox GPS Info doesn't include analytics, ad tracking, or a backend server — the GPS data from your device is read over Bluetooth and shown on screen, and it never leaves your phone.</div>
+        </details>
+        <details>
+          <summary>What iOS version do I need?<span class="plus"></span></summary>
+          <div class="answer">iOS 17.0 or later, on any iPhone that supports it.</div>
+        </details>
+        <details>
+          <summary>The app disconnects randomly mid-session<span class="plus"></span></summary>
+          <div class="answer">This is almost always a Bluetooth range or battery issue rather than the app itself — RaceBox devices have a practical BLE range of around 10 metres, less through metal or a car body. Keep your phone within a few feet of the device, and check the RaceBox's own battery level if it's been running for a long session.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="troubleshooting">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-tag">Still stuck?</div>
+        <h2>Work through these in order</h2>
+        <p>This sequence resolves the large majority of connection reports we get.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="num">1</div>
+          <div><h3>Wake the device</h3><p>Tap the power button on your RaceBox once — a light or vibration confirms it's active — then try scanning again.</p></div>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <div><h3>Confirm nothing else is connected to it</h3><p>Close the RaceBox Manager app or any other app that might already hold a Bluetooth connection to the device.</p></div>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <div><h3>Check the app's Bluetooth permission</h3><p>Open <strong>Settings → RaceBox GPS Info</strong> on your iPhone and confirm Bluetooth is switched on.</p></div>
+        </div>
+        <div class="step">
+          <div class="num">4</div>
+          <div><h3>Toggle iPhone Bluetooth off and on</h3><p>Control Centre → Bluetooth off, wait five seconds, then back on. This clears a surprising number of stuck BLE states.</p></div>
+        </div>
+        <div class="step">
+          <div class="num">5</div>
+          <div><h3>Force close and reopen the app</h3><p>Swipe up from the app switcher to fully close RaceBox GPS Info, then relaunch it and scan again.</p></div>
+        </div>
+        <div class="step">
+          <div class="num">6</div>
+          <div><h3>Update iOS</h3><p>Settings → General → Software Update. Bluetooth LE stack fixes ship in point releases fairly often.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-tag">Still not sorted</div>
+        <h2>Get in touch</h2>
+      </div>
+
+      <div class="contact-panel">
+        <div>
+          <h3>Email support</h3>
+          <p>We read every message and typically reply within 2 business days.</p>
+        </div>
+        <a class="btn-primary" href="mailto:neal.puff@protonmail.com?subject=RaceBox%20GPS%20Info%20—%20Support">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+          neal.puff@protonmail.com
+        </a>
+      </div>
+
+      <div class="checklist">
+        <h3>To help us diagnose it faster, include:</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Your RaceBox model (Mini, Mini S, or Micro)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> iPhone model and iOS version</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> App version (Settings → RaceBox GPS Info → About, or the App Store listing)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> What you expected to happen, and what happened instead</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="app-info">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-tag">Reference</div>
+        <h2>App information</h2>
+      </div>
+      <div class="info-panel">
+        <div class="info-row"><span class="k">App name</span><span class="v">RaceBox GPS Info</span></div>
+        <div class="info-row"><span class="k">Platform</span><span class="v">iOS 17.0 or later</span></div>
+        <div class="info-row"><span class="k">Compatible hardware</span><span class="v">RaceBox Mini, Mini S, Micro</span></div>
+        <div class="info-row"><span class="k">Permissions used</span><span class="v">Bluetooth only</span></div>
+        <div class="info-row"><span class="k">Data collection</span><span class="v">None — no analytics, no accounts</span></div>
+        <div class="info-row"><span class="k">Developer</span><span class="v">Independent — not affiliated with RaceBox</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fbrand">RACEBOX GPS INFO — SUPPORT</div>
+    <div class="fnote">Independent companion app for RaceBox GPS hardware. Not affiliated with or endorsed by RaceBox.</div>
+  </div>
+</footer>
+
+</body>
+</html>
