@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Support — RaceBox GPS Info</title>
-<meta name="description" content="Support and troubleshooting for RaceBox GPS Info, the iPhone companion app for RaceBox GPS hardware.">
+<meta name="description" content="Support and troubleshooting for RaceBox GPS Info, the iPhone companion app for RaceBox GPS hardware — live data, run recording, map playback and GPX/CSV export.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -166,9 +166,9 @@
 <main>
   <section class="hero">
     <div class="wrap">
-      <span class="eyebrow"><span class="dot"></span> Support</span>
+      <span class="eyebrow"><span class="dot"></span> Support · v2.2</span>
       <h1>Need a hand with <span class="accent">RaceBox GPS Info</span>?</h1>
-      <p class="lede">Most issues come down to a Bluetooth permission that hasn't been granted yet, or the RaceBox not getting power. Check the quick answers below — if that doesn't sort it, reach out directly and we'll get back to you.</p>
+      <p class="lede">Most issues come down to a Bluetooth permission that hasn't been granted yet, or the RaceBox not getting power. Check the quick answers below — including how recording, playback and exporting work — and if that doesn't sort it, reach out directly and we'll get back to you.</p>
       <div class="hero-ctas">
         <a class="btn-primary" href="mailto:nsat-dev@pm.me?subject=RaceBox%20GPS%20Info%20—%20Support">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
@@ -195,6 +195,10 @@
           <div class="answer">RaceBox devices don't have a power button — there's a single status LED, and the unit turns on automatically as soon as it detects a Bluetooth scan reaching it. If the LED stays dark even while scanning, it isn't getting power: check that it's plugged in, or that its battery has enough charge. Also confirm it isn't already connected to another phone, the RaceBox Manager app, or a dashcam, since BLE devices generally only hold one connection at a time.</div>
         </details>
         <details>
+          <summary>Can I reconnect without scanning every time?<span class="plus"></span></summary>
+          <div class="answer">Yes. The app remembers the last RaceBox you connected to, so on the connect screen you'll see a <strong>Reconnect to [name]</strong> button that connects straight to it — no scan needed. If the device is off or out of range, it falls back to scanning automatically after a few seconds.</div>
+        </details>
+        <details>
           <summary>What does the LED on my RaceBox mean?<span class="plus"></span></summary>
           <div class="answer">The device has a single status LED and no buttons — this is what it's telling you:
             <br><br>
@@ -206,7 +210,19 @@
         </details>
         <details>
           <summary>It connects, but shows "No Fix"<span class="plus"></span></summary>
-          <div class="answer">A GPS fix depends on the receiver seeing enough open sky, not on the app — indoors, in a garage, or under heavy cloud cover it can take a while, or never lock at all. Take the device outside with a clear view up and give it 30–60 seconds; the satellite count on screen will climb as it locks on.</div>
+          <div class="answer">A GPS fix depends on the receiver seeing enough open sky, not on the app — indoors, in a garage, or under heavy cloud cover it can take a while, or never lock at all. Take the device outside with a clear view up and give it 30–60 seconds; the satellite count on screen will climb as it locks on. The map, saving a location, recording and the compass all become available once it has a 3D fix.</div>
+        </details>
+        <details>
+          <summary>What do Speed, Elevation and G-Force show?<span class="plus"></span></summary>
+          <div class="answer">They come straight from the RaceBox. <strong>Speed</strong> is ground speed and <strong>Elevation</strong> is height above sea level, both shown in your region's units (mph/feet or km/h/metres). <strong>G-Force</strong> is the combined cornering-and-braking force measured by the device's built-in motion sensor. Speed, elevation and position need a GPS fix; g-force is always live.</div>
+        </details>
+        <details>
+          <summary>How do I record a run and play it back?<span class="plus"></span></summary>
+          <div class="answer">Once you have a fix, tap <strong>Record</strong> on the main screen — a red banner shows the elapsed time and how many points have been captured. Tap <strong>Stop</strong> to finish and name it. Open your recordings from the sessions button (the waveform icon) in the top-right, tap a run, and choose <strong>Play on Map</strong> to replay it with a track colored by speed, a moving marker, a scrubber, and a live data panel. The screen stays on while you're recording, so the phone won't auto-lock and stop the run. If you do leave the app mid-run, the recording is saved automatically.</div>
+        </details>
+        <details>
+          <summary>How do I get my data out — GPX or CSV?<span class="plus"></span></summary>
+          <div class="answer">Open a recording from the sessions list and tap <strong>Export GPX</strong> or <strong>Export CSV</strong>. GPX opens in Google Earth and most track-analysis tools; CSV (one row per sample, with time, position, elevation, speed, heading and g-force) opens in any spreadsheet. Saved locations can also be exported — a single one is shared as text, and <strong>Export All</strong> produces a PDF table you can print or email.</div>
         </details>
         <details>
           <summary>Why does the app need Bluetooth permission?<span class="plus"></span></summary>
@@ -217,8 +233,12 @@
           <div class="answer">RaceBox Mini, RaceBox Mini S, and RaceBox Micro. Other RaceBox products that don't advertise over Bluetooth LE with the standard RaceBox naming won't show up in a scan.</div>
         </details>
         <details>
+          <summary>Where are my recordings and saved locations kept?<span class="plus"></span></summary>
+          <div class="answer">On your phone only. Recorded runs and saved locations are stored on the device and kept between sessions — there's no account and no cloud. They stay there until you delete them, or until you choose to share or export one.</div>
+        </details>
+        <details>
           <summary>Does the app collect or share my data?<span class="plus"></span></summary>
-          <div class="answer">No. RaceBox GPS Info doesn't include analytics, ad tracking, or a backend server — the GPS data from your device is read over Bluetooth and shown on screen, and it never leaves your phone.</div>
+          <div class="answer">No. RaceBox GPS Info doesn't include analytics, ad tracking, or a backend server — the GPS data from your device is read over Bluetooth and shown on screen. Recordings and saved locations stay on your phone, and nothing leaves it unless you explicitly share or export it.</div>
         </details>
         <details>
           <summary>What iOS version do I need?<span class="plus"></span></summary>
@@ -226,7 +246,7 @@
         </details>
         <details>
           <summary>The app disconnects randomly mid-session<span class="plus"></span></summary>
-          <div class="answer">This is almost always a Bluetooth range or battery issue rather than the app itself — RaceBox devices have a practical BLE range of around 10 metres, less through metal or a car body. Keep your phone within a few feet of the device, and check the RaceBox's own battery level if it's been running for a long session.</div>
+          <div class="answer">This is almost always a Bluetooth range or battery issue rather than the app itself — RaceBox devices have a practical BLE range of around 10 metres, less through metal or a car body. Keep your phone within a few feet of the device, and check the RaceBox's own battery level if it's been running for a long session. If a recording was in progress when the connection dropped, it is saved automatically so you don't lose the run.</div>
         </details>
       </div>
     </div>
@@ -259,7 +279,7 @@
         </div>
         <div class="step">
           <div class="num">5</div>
-          <div><h3>Force close and reopen the app</h3><p>Swipe up from the app switcher to fully close RaceBox GPS Info, then relaunch it and scan again.</p></div>
+          <div><h3>Force close and reopen the app</h3><p>Swipe up from the app switcher to fully close RaceBox GPS Info, then relaunch it. Use <strong>Reconnect</strong> to jump straight back to your device, or scan again.</p></div>
         </div>
         <div class="step">
           <div class="num">6</div>
@@ -307,8 +327,11 @@
       </div>
       <div class="info-panel">
         <div class="info-row"><span class="k">App name</span><span class="v">RaceBox GPS Info</span></div>
+        <div class="info-row"><span class="k">Version</span><span class="v">2.2</span></div>
         <div class="info-row"><span class="k">Platform</span><span class="v">iOS 17.0 or later</span></div>
         <div class="info-row"><span class="k">Compatible hardware</span><span class="v">RaceBox Mini, Mini S, Micro</span></div>
+        <div class="info-row"><span class="k">Live readout</span><span class="v">Time, position, speed, elevation, g-force</span></div>
+        <div class="info-row"><span class="k">Recording</span><span class="v">On-device · GPX / CSV export · map playback</span></div>
         <div class="info-row"><span class="k">Permissions used</span><span class="v">Bluetooth only</span></div>
         <div class="info-row"><span class="k">Data collection</span><span class="v">None — no analytics, no accounts</span></div>
         <div class="info-row"><span class="k">Developer</span><span class="v">Independent — not affiliated with RaceBox</span></div>
